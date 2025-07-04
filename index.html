@@ -3,119 +3,191 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pack 2008 - Cedar Park, TX</title>
+  <title>Cub Scout Pack 2008 - Cedar Park, TX</title>
+  <link rel="icon" href="https://www.scouting.org/wp-content/uploads/2023/08/favicon-cub.png" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #003f87;  /* navy blue */
-      --accent-color: #ffcc00;   /* gold */
-      --bg-light: #f5f5f5;
+      --primary: #003f87;
+      --accent: #ffcc00;
+      --bg-light: #f9f9f9;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-    }
+
     body {
-      background: var(--bg-light);
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      background-color: var(--bg-light);
+      scroll-behavior: smooth;
       color: #333;
-      line-height: 1.6;
     }
+
     header {
-      background: var(--primary-color);
+      background: var(--primary);
       color: white;
       padding: 1rem 2rem;
-    }
-    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
+    header img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    header .logo-group {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       color: white;
       margin-left: 1.5rem;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
     }
+
     nav a:hover {
-      color: var(--accent-color);
+      color: var(--accent);
     }
+
     .hero {
-      background: white;
-      padding: 4rem 2rem;
+      background: url('https://images.unsplash.com/photo-1570732468069-1b1cfd918b51?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      color: white;
       text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
     }
-    .hero h1 {
-      color: var(--primary-color);
-      font-size: 2.5rem;
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
     }
+
+    .hero h1,
     .hero p {
-      margin-top: 1rem;
-      font-size: 1.2rem;
+      position: relative;
+      z-index: 1;
     }
-    .section {
-      padding: 3rem 2rem;
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
     }
-    .section h2 {
-      color: var(--primary-color);
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
+      color: var(--primary);
     }
+
+    section p, section li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
     footer {
       background: #222;
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin: 0.5rem 0;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
+    <div class="logo-group">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/d/d1/Cub_Scouts_logo.svg/1200px-Cub_Scouts_logo.svg.png" alt="Cub Scouts Logo">
+      <strong style="font-size: 1.5rem;">Pack 2008</strong>
+    </div>
     <nav>
-      <div><strong>Pack 2008</strong></div>
-      <div>
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#join">Join</a>
-        <a href="#calendar">Calendar</a>
-        <a href="#contact">Contact</a>
-      </div>
+      <a href="#about">About</a>
+      <a href="#join">Join</a>
+      <a href="#calendar">Calendar</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
     <h1>Welcome to Cub Scout Pack 2008</h1>
-    <p>Serving Cedar Park, Texas • Fun • Friendship • Adventure!</p>
+    <p>Cedar Park, Texas — Where Adventure, Leadership & Fun Begin!</p>
   </section>
 
-  <section class="section" id="about">
-    <h2>About Us</h2>
-    <p>Pack 2008 is a family-oriented Cub Scout pack in Cedar Park, TX, committed to building character and having fun. We meet weekly and have exciting events throughout the year.</p>
+  <section id="about">
+    <h2>About Our Pack</h2>
+    <p>Pack 2008 is a family-volunteer-lead Cub Scout pack based in Cedar Park, TX. We welcome boys and girls in grades K–5 to participate in fun, skill-building activities that promote character, citizenship, and leadership.</p>
+    <p>We meet weekly and hold exciting events like camping, Raingutter Regatta, Pinewood Derby, and service projects.</p>
   </section>
 
-  <section class="section" id="join">
-    <h2>Join Scouting</h2>
-    <p>Interested in joining? We welcome boys and girls in grades K–5. <a href="mailto:atxpack2008@gmail.com">Email us</a> to learn more!</p>
+  <section id="join">
+    <h2>Join the Adventure</h2>
+    <p>We are actively recruiting! If your child is in Kindergarten through 5th grade, they’re eligible to join Cub Scouts.</p>
+    <ul>
+      <li>Age-appropriate outdoor adventure</li>
+      <li>Community service projects</li>
+      <li>Character and leadership development</li>
+    </ul>
+    <p>Visit <a href="https://beascout.org" target="_blank">BeAScout.org</a> to learn more or email us below.</p>
   </section>
 
-  <section class="section" id="calendar">
-    <h2>Calendar</h2>
-    <p>Stay tuned — our 2025–2026 calendar is coming soon!</p>
+  <section id="calendar">
+    <h2>Upcoming Events</h2>
+    <p>We’ll post our full calendar soon! Events include:</p>
+    <ul>
+      <li>Fall Family Campout</li>
+      <li>Raingutter Regatta</li>
+      <li>Overnight at NASA in Houston</li>
+      <li>Pinewood Derby</li>
+      <li>Blue & Gold Banquet</li>
+      <li>Service Projects and Hikes</li>
+    </ul>
   </section>
 
-  <section class="section" id="contact">
+  <section id="contact">
     <h2>Contact Us</h2>
-    <p>Email: <a href="mailto:atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
+    <p>Got questions? Want to join?</p>
+    <p>Email us at <a href="atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
   </section>
 
   <footer>
-    &copy; 2025 Pack 2008 - Cedar Park, TX | A Proud Part of Scouting America
+    &copy; 2025 Cub Scout Pack 2008 • Cedar Park, TX<br/>
+    Proudly chartered by the Boy Scouts of America
   </footer>
 
 </body>
 </html>
-
-
-
-
