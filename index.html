@@ -1,94 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-24">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cubscout Pack 2008</title>
-    <style>
-        body {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f8ff;
-            color: #333;
-        }
-        header {
-            background-color: #003c71;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #a7a5a5;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #003c71;
-        }
-        .container {
-            padding: 30px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #003c71;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pack 2008 - Cedar Park, TX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #003f87;  /* navy blue */
+      --accent-color: #ffcc00;   /* gold */
+      --bg-light: #f5f5f5;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background: var(--bg-light);
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      color: var(--accent-color);
+    }
+    .hero {
+      background: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .hero h1 {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+    }
+    .hero p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+    }
+    .section {
+      padding: 3rem 2rem;
+    }
+    .section h2 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Cubscout Pack 2008</h1>
-        <p>Adventures in Scouting!</p>
-    </header>
 
+  <header>
     <nav>
-        <a href="#about">About Us</a>
-        <a href="#Leadership">Leadership</a>
-        <a href="#events">Upcoming Events</a>
-        <a href="#contact">Contact Us</a>
+      <div><strong>Pack 2008</strong></div>
+      <div>
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+        <a href="#calendar">Calendar</a>
+        <a href="#contact">Contact</a>
+      </div>
     </nav>
+  </header>
 
-    <div class="container">
-        <section id="about">
-            <h2>About Us</h2>
-            <p>Cubscout Pack 2008 is dedicated to providing boys and girls ages 7-10 with a fun and educational experience through scouting. Our pack emphasizes character development, citizenship, and personal fitness.</p>
-        </section>
+  <section class="hero">
+    <h1>Welcome to Cub Scout Pack 2008</h1>
+    <p>Serving Cedar Park, Texas • Fun • Friendship • Adventure!</p>
+  </section>
 
-        <section id="leadership">
-            <h2>Leadership</h2>
-            <ul>
-                <li>Cubmaster: Jeff Duncan</li>
-                <li>Commitee Chair: Lauren Duncan</li>
-                <li>Treasurer: TBD</li>
-            </ul>
-        </section>
+  <section class="section" id="about">
+    <h2>About Us</h2>
+    <p>Pack 2008 is a family-oriented Cub Scout pack in Cedar Park, TX, committed to building character and having fun. We meet weekly and have exciting events throughout the year.</p>
+  </section>
 
-        <section id="events">
-            <h2>Upcoming Events</h2>
-            <ul>
-                <li>Pack Meeting - October 15, 2024</li>
-                <li>Camping Trip - October 28-30, 2024</li>
-                <li>Fundraiser - November 12, 2024</li>
-            </ul>
-        </section>
+  <section class="section" id="join">
+    <h2>Join Scouting</h2>
+    <p>Interested in joining? We welcome boys and girls in grades K–5. <a href="mailto:atxpack2008@gmail.com">Email us</a> to learn more!</p>
+  </section>
 
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <p>If you have any questions, feel free to reach out!</p>
-            <p>Email: <a href="mailto:pack2008@example.com">pack2008@example.com</a></p>
-            <p>Phone: (123) 456-7890</p>
-        </section>
-    </div>
+  <section class="section" id="calendar">
+    <h2>Calendar</h2>
+    <p>Stay tuned — our 2025–2026 calendar is coming soon!</p>
+  </section>
 
-    <footer>
-        <p>&copy; 2024 Cubscout Pack 2008. All rights reserved.</p>
-    </footer>
+  <section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: <a href="mailto:atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Pack 2008 - Cedar Park, TX | A Proud Part of Scouting America
+  </footer>
+
 </body>
 </html>
+
+
+
+
