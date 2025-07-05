@@ -16,9 +16,23 @@
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
-      background-color: var(--bg-light);
       scroll-behavior: smooth;
       color: #333;
+
+      background-image: url('assets/banner.jpg');
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
 
     header {
@@ -55,28 +69,10 @@
       color: var(--accent);
     }
 
-   .hero {
-  background: url('assets/banner.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  text-align: center;
-  padding: 8rem 2rem;
-  position: relative;
-  height: 500px;
-}
-
-   .hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4); /* overlay to increase contrast */
-}
-
-   .hero h1,
-   .hero p {
-  position: relative;
-  z-index: 1;
-}
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 4rem 2rem;
+    }
 
     .hero h1 {
       font-size: 3rem;
@@ -101,9 +97,39 @@
       color: var(--primary);
     }
 
-    section p, section li {
+    section p,
+    section li {
       font-size: 1.1rem;
       line-height: 1.6;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 2rem auto;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .full-banner {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 300px;
+      margin-top: 4rem;
+    }
+
+    #bottom-banner {
+      background-image: url('assets/banner-lower.jpg');
     }
 
     footer {
@@ -112,7 +138,7 @@
       text-align: center;
       padding: 2rem;
       font-size: 0.9rem;
-      margin-top: 4rem;
+      margin-top: 0;
     }
 
     a {
@@ -124,6 +150,7 @@
         flex-direction: column;
         align-items: flex-start;
       }
+
       nav a {
         margin: 0.5rem 0;
       }
@@ -134,7 +161,7 @@
 
   <header>
     <div class="logo-group">
-      <img src="assets/Logo.jpg" alt="Pack 2008 Logo" />
+      <img src="assets/logo.jpg" alt="Pack 2008 Logo" />
       <span>Cub Scout Pack 2008</span>
     </div>
     <nav>
@@ -152,21 +179,23 @@
 
   <section id="about">
     <h2>About Our Pack</h2>
-    <p>Pack 2008 is a family-volunteer-lead Cub Scout pack based in Cedar Park, TX. We welcome boys and girls in grades K–5 to participate in fun, skill-building activities that promote character, citizenship, and leadership.</p>
+    <p>Pack 2008 is a family-volunteer-led Cub Scout pack based in Cedar Park, TX. We welcome boys and girls in grades K–5 to participate in fun, skill-building activities that promote character, citizenship, and leadership.</p>
     <p>We meet weekly and hold exciting events like camping, Raingutter Regatta, Pinewood Derby, and service projects.</p>
+    <p>Our Pack is made up of kids and parent volunteers from Whitestone, Knowles, and Bagdad Elementary schools, as well as homeschool and charter school families.</p>
   </section>
 
   <section id="video">
-    <h2 style="text-align: center;">Why Cub Scouts?</h2>
+    <h2 style="text-align: left;">What are the Benefits of Cub Scouts?</h2>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/watch?v=De1JbT6Vglg"
-              title="Why Cub Scouts and Why is the Benefit?"
-              frameborder="0"
-              allowfullscreen>
+      <iframe 
+        src="https://www.youtube.com/embed/De1JbT6Vglg"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
       </iframe>
     </div>
-  </section>
-
+  </section>  
 
   <section id="join">
     <h2>Join the Adventure</h2>
@@ -192,15 +221,33 @@
     </ul>
   </section>
 
+  <section id="location">
+    <h2>Where We Meet</h2>
+    <p>We meet most Tuesday evenings during the Elementary school year, at 7:00pm-8:30pm, at Christ Episcopal Church on Whitestone.</p>
+<iframe 
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9273.673466819542!2d-97.88399812341281!3d30.51124967469184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2e7be2fce417%3A0x1c38759b98bb5d4f!2sChrist%20Episcopal%20Church!5e1!3m2!1sen!2sus!4v1751748898247!5m2!1sen!2sus"
+  width="600" height="450" style="border:0;" allowfullscreen="" 
+  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</iframe>    <p>
+      📍 <a href="https://maps.app.goo.gl/y9hZ8zWmvqpGQqiTA" target="_blank">
+        View on Google Maps
+      </a>
+    </p>
+  </section>
+
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Got questions? Want to join?</p>
-    <p>Email us at <a href="atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
+    <p>Email us at <a href="mailto:atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
+    <p>Request more information at <a href="https://my.scouting.org/more-info/002e91e0-0312-4479-bc29-c1617d85dfc6&beascout=true" target="_blank">my.scouting.org</a></p>
   </section>
+
+  <!-- ✅ Bottom Banner Section -->
+  <div id="bottom-banner" class="full-banner"></div>
 
   <footer>
     &copy; 2025 Cub Scout Pack 2008 • Cedar Park, TX<br/>
-    Proudly chartered by the Boy Scouts of America
+    Proudly chartered by Scouting America
   </footer>
 
 </body>
