@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cub Scout Pack 2008 - Cedar Park, TX</title>
-  <link rel="icon" type="image/png" href="assets/logo.jpg" />
+  <link rel="icon" type="image/png" href="assets/scout-logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -12,7 +12,21 @@
       --accent: #ffcc00;
       --bg-light: #f9f9f9;
     }
+    .pack-title {
+       display: flex;
+       flex-direction: column;
+       line-height: 1.2;
+    }
 
+.pack-name {
+  font-size: 1.875rem; /* 25% larger than 1.5rem */
+  font-weight: bold;
+}
+
+.pack-location {
+  font-size: 1rem;
+  color: #ddd;
+}
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -170,7 +184,7 @@
   <header>
 
   <div class="logo-group">
-    <img src="assets/logo.jpg" alt="Pack 2008 Logo" />
+    <img src="assets/scout-logo.jpg" alt="Pack 2008 Logo" />
     <div class="pack-title">
       <div class="pack-name">Cub Scout Pack 2008</div>
       <div class="pack-location">Cedar Park, TX</div>
