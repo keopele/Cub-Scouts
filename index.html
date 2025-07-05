@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cub Scout Pack 2008 - Cedar Park, TX</title>
   <link rel="icon" type="image/png" href="assets/logo.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #003f87;
@@ -18,7 +18,6 @@
       margin: 0;
       scroll-behavior: smooth;
       color: #333;
-
       background-image: url('assets/banner.jpg');
       background-attachment: fixed;
       background-size: cover;
@@ -33,6 +32,10 @@
       inset: 0;
       background: rgba(255, 255, 255, 0.85);
       z-index: -1;
+    }
+
+    h1, h2 {
+      font-family: 'Merriweather', serif;
     }
 
     header {
@@ -120,6 +123,11 @@
       height: 100%;
     }
 
+    iframe {
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
     .full-banner {
       background-size: cover;
       background-position: center;
@@ -160,10 +168,14 @@
 <body>
 
   <header>
-    <div class="logo-group">
-      <img src="assets/logo.jpg" alt="Pack 2008 Logo" />
-      <span>Cub Scout Pack 2008</span>
+
+  <div class="logo-group">
+    <img src="assets/logo.jpg" alt="Pack 2008 Logo" />
+    <div class="pack-title">
+      <div class="pack-name">Cub Scout Pack 2008</div>
+      <div class="pack-location">Cedar Park, TX</div>
     </div>
+  </div>
     <nav>
       <a href="#about">About</a>
       <a href="#join">Join</a>
@@ -185,7 +197,7 @@
   </section>
 
   <section id="video">
-    <h2 style="text-align: left;">What are the Benefits of Cub Scouts?</h2>
+    <h2>What are the Benefits of Cub Scouts?</h2>
     <div class="video-container">
       <iframe 
         src="https://www.youtube.com/embed/De1JbT6Vglg"
@@ -195,7 +207,7 @@
         allowfullscreen>
       </iframe>
     </div>
-  </section>  
+  </section>
 
   <section id="join">
     <h2>Join the Adventure</h2>
@@ -223,12 +235,15 @@
 
   <section id="location">
     <h2>Where We Meet</h2>
-    <p>We meet most Tuesday evenings during the Elementary school year, at 7:00pm-8:30pm, at Christ Episcopal Church on Whitestone.</p>
-<iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9273.673466819542!2d-97.88399812341281!3d30.51124967469184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2e7be2fce417%3A0x1c38759b98bb5d4f!2sChrist%20Episcopal%20Church!5e1!3m2!1sen!2sus!4v1751748898247!5m2!1sen!2sus"
-  width="600" height="450" style="border:0;" allowfullscreen="" 
-  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</iframe>    <p>
+    <p>We meet most Tuesday evenings during the elementary school year, from 7:00–8:30 PM, at Christ Episcopal Church on Whitestone Boulevard in Cedar Park.</p>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9273.673466819542!2d-97.88399812341281!3d30.51124967469184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2e7be2fce417%3A0x1c38759b98bb5d4f!2sChrist%20Episcopal%20Church!5e1!3m2!1sen!2sus!4v1751748898247!5m2!1sen!2sus"
+      width="100%" height="450" style="border:0;" allowfullscreen=""
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <p>
       📍 <a href="https://maps.app.goo.gl/y9hZ8zWmvqpGQqiTA" target="_blank">
         View on Google Maps
       </a>
@@ -242,7 +257,6 @@
     <p>Request more information at <a href="https://my.scouting.org/more-info/002e91e0-0312-4479-bc29-c1617d85dfc6&beascout=true" target="_blank">my.scouting.org</a></p>
   </section>
 
-  <!-- ✅ Bottom Banner Section -->
   <div id="bottom-banner" class="full-banner"></div>
 
   <footer>
