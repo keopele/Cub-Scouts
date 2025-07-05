@@ -55,26 +55,28 @@
       color: var(--accent);
     }
 
-    .hero {
-      background: url('https://images.unsplash.com/photo-1570732468069-1b1cfd918b51?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      color: white;
-      text-align: center;
-      padding: 6rem 2rem;
-      position: relative;
-    }
+   .hero {
+  background: url('assets/banner.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 8rem 2rem;
+  position: relative;
+  height: 500px;
+}
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-    }
+   .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* overlay to increase contrast */
+}
 
-    .hero h1,
-    .hero p {
-      position: relative;
-      z-index: 1;
-    }
+   .hero h1,
+   .hero p {
+  position: relative;
+  z-index: 1;
+}
 
     .hero h1 {
       font-size: 3rem;
