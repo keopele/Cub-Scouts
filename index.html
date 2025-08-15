@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Official site of Cub Scout Pack 2008 in Cedar Park, Texas. Learn how to join, see our events, and contact us!">
   <title>Cub Scout Pack 2008 - Cedar Park, TX</title>
   <link rel="icon" type="image/png" href="assets/scout-logo.jpg" />
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -67,13 +68,18 @@
     }
 
     .pack-name {
-      font-size: 1.875rem; /* 25% larger than 1.5rem */
+      font-size: 1.875rem;
       font-weight: bold;
     }
 
     .pack-location {
       font-size: 1rem;
       color: #ddd;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
     }
 
     nav a {
@@ -86,6 +92,74 @@
 
     nav a:hover {
       color: var(--accent);
+    }
+
+    /* Hamburger styles */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 4px 0;
+      transition: 0.3s;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      nav a {
+        margin: 1rem 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      header img {
+        height: 40px;
+      }
+
+      .pack-name {
+        font-size: 1.2rem;
+      }
+
+      .pack-location {
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        padding: 4rem 1rem 2rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .full-banner {
+        height: 150px;
+      }
     }
 
     .hero {
@@ -168,17 +242,6 @@
     a {
       color: var(--primary);
     }
-
-    @media (max-width: 768px) {
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav a {
-        margin: 0.5rem 0;
-      }
-    }
   </style>
 </head>
 <body>
@@ -191,7 +254,12 @@
         <div class="pack-location">Cedar Park, TX</div>
       </div>
     </div>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="nav-menu">
       <a href="#about">About</a>
       <a href="#join">Join</a>
       <a href="#calendar">Calendar</a>
@@ -284,5 +352,10 @@
     Proudly chartered by Scouting America
   </footer>
 
+  <script>
+    function toggleMenu() {
+      document.getElementById("nav-menu").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>
