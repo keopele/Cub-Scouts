@@ -1,361 +1,740 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Official site of Cub Scout Pack 2008 in Cedar Park, Texas. Learn how to join, see our events, and contact us!">
-  <title>Cub Scout Pack 2008 - Cedar Park, TX</title>
-  <link rel="icon" type="image/png" href="assets/scout-logo.jpg" />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #003f87;
-      --accent: #ffcc00;
-      --bg-light: #f9f9f9;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Official site of Cub Scout Pack 2008 in Cedar Park, Texas. Learn how to join, see our events, and contact us!">
+<title>Cub Scout Pack 2008 - Cedar Park, TX</title>
+<link rel="icon" type="image/png" href="assets/scout-logo.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine:#14375E;
+    --pine-dark:#0B2540;
+    --canvas:#FBF7EE;
+    --canvas-alt:#EDEEF2;
+    --ink:#232A33;
+    --ember:#E8763F;
+    --ember-dark:#C1592A;
+    --gold:#E3A008;
+    --trail:#8FA8C2;
+    --line: rgba(20,55,94,0.28);
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--canvas);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    line-height:1.1;
+    margin:0 0 0.6rem 0;
+    color:var(--pine-dark);
+  }
+
+  p{ margin:0 0 1rem 0; }
+
+  a{ color:var(--pine); }
+
+  img{ max-width:100%; display:block; }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px; overflow:hidden;
+    clip:rect(0 0 0 0); white-space:nowrap;
+  }
+
+  a:focus-visible, button:focus-visible, .hamburger:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    background:var(--pine);
+    color:#fff;
+    padding:0.85rem 1.5rem;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  .logo-group{ display:flex; align-items:center; gap:0.9rem; min-width:0; }
+
+  header img.logo{
+    height:48px;
+    width:48px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--gold);
+    flex-shrink:0;
+  }
+
+  .pack-title{ display:flex; flex-direction:column; line-height:1.2; min-width:0; }
+
+  .pack-name{
+    font-family:'Fraunces', serif;
+    font-size:1.4rem;
+    font-weight:700;
+    color:#fff;
+    white-space:nowrap;
+  }
+
+  .pack-location{
+    font-size:0.85rem;
+    color:var(--trail);
+    letter-spacing:0.02em;
+  }
+
+  nav.primary-nav{ display:flex; align-items:center; }
+
+  nav.primary-nav a{
+    color:#fff;
+    margin-left:2rem;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.95rem;
+    letter-spacing:0.01em;
+    position:relative;
+    padding-bottom:4px;
+  }
+
+  nav.primary-nav a::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:2px;
+    background:var(--gold);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.25s ease;
+  }
+
+  nav.primary-nav a:hover::after,
+  nav.primary-nav a:focus-visible::after{ transform:scaleX(1); }
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    cursor:pointer;
+    background:none;
+    border:none;
+    padding:8px;
+  }
+
+  .hamburger span{
+    display:block;
+    width:26px;
+    height:3px;
+    background:#fff;
+    border-radius:2px;
+    transition:0.3s;
+  }
+
+  .hamburger[aria-expanded="true"] span:nth-child(1){ transform:translateY(8px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3){ transform:translateY(-8px) rotate(-45deg); }
+
+  @media (max-width: 800px){
+    nav.primary-nav{
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      background:var(--pine-dark);
+      position:absolute;
+      top:100%;
+      left:0;
+      width:100%;
+      padding:0.5rem 1.5rem 1.5rem;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
     }
+    nav.primary-nav.active{ max-height:320px; }
+    nav.primary-nav a{ margin:0.9rem 0; font-size:1.1rem; }
+    .hamburger{ display:flex; }
+    .pack-name{ font-size:1.1rem; }
+    .pack-location{ font-size:0.7rem; }
+    header img.logo{ height:40px; width:40px; }
+  }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      scroll-behavior: smooth;
-      color: #333;
-      background-image: url('assets/banner.jpg');
-      background-attachment: fixed;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-    }
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    text-align:center;
+    padding:6.5rem 1.5rem 5.5rem;
+    color:#fff;
+    background:
+      linear-gradient(180deg, rgba(11,37,64,0.86), rgba(20,55,94,0.9)),
+      url('assets/banner.jpg');
+    background-size:cover;
+    background-position:center;
+    overflow:hidden;
+  }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.85);
-      z-index: -1;
-    }
+  .hero-content{ position:relative; z-index:1; max-width:700px; margin:0 auto; }
 
-    h1, h2 {
-      font-family: 'Merriweather', serif;
-    }
+  .eyebrow{
+    display:inline-block;
+    font-size:0.8rem;
+    font-weight:700;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1rem;
+  }
 
-    header {
-      background: var(--primary);
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+  .hero h1{ color:#fff; font-size:clamp(2.1rem, 5vw, 3.4rem); margin-bottom:0.9rem; }
 
-    header img {
-      height: 50px;
-      margin-right: 1rem;
-    }
+  .hero p.tagline{
+    font-size:1.2rem;
+    color:#EFE8D8;
+    max-width:520px;
+    margin:0 auto 2rem;
+  }
 
-    .logo-group {
-      display: flex;
-      align-items: center;
-    }
+  .hero-ctas{ display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
 
-    .pack-title {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
+  .btn{
+    display:inline-block;
+    padding:0.85rem 1.6rem;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.98rem;
+    text-decoration:none;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{ transform:translateY(-2px); }
 
-    .pack-name {
-      font-size: 1.875rem;
-      font-weight: bold;
-    }
+  .btn-primary{ background:var(--gold); color:var(--pine-dark); }
+  .btn-primary:hover{ box-shadow:0 8px 20px rgba(227,160,8,0.35); }
 
-    .pack-location {
-      font-size: 1rem;
-      color: #ddd;
-    }
+  .btn-outline{ background:transparent; color:#fff; border-color:rgba(255,255,255,0.6); }
+  .btn-outline:hover{ border-color:#fff; }
 
-    nav {
-      display: flex;
-      align-items: center;
-    }
+  /* ---------- Sections & trail line ---------- */
+  main{ position:relative; max-width:980px; margin:0 auto; padding:0 1.5rem; }
 
-    nav a {
-      color: white;
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-    }
+  main::before{
+    content:"";
+    position:absolute;
+    top:0; bottom:0;
+    left:34px;
+    width:0;
+    border-left:3px dashed var(--line);
+  }
 
-    nav a:hover {
-      color: var(--accent);
-    }
+  @media (max-width: 700px){
+    main::before{ display:none; }
+  }
 
-    /* Hamburger styles */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
+  section{
+    padding:3.4rem 0 3.4rem 4.5rem;
+    position:relative;
+  }
 
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background: white;
-      margin: 4px 0;
-      transition: 0.3s;
-    }
+  @media (max-width: 700px){
+    section{ padding:2.6rem 0; }
+  }
 
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: var(--primary);
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 100%;
-        padding: 1rem;
-      }
+  .waypoint{
+    position:absolute;
+    left:0;
+    top:3.6rem;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    background:var(--canvas-alt);
+    border:3px solid var(--pine);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.6rem;
+  }
 
-      nav.active {
-        display: flex;
-      }
+  @media (max-width: 700px){
+    .waypoint{ position:static; margin-bottom:1rem; width:56px; height:56px; font-size:1.4rem; }
+  }
 
-      nav a {
-        margin: 1rem 0;
-      }
+  section h2{ font-size:clamp(1.6rem, 3vw, 2.1rem); }
 
-      .hamburger {
-        display: flex;
-      }
+  section p, section li{ font-size:1.05rem; line-height:1.7; color:var(--ink); }
 
-      header img {
-        height: 40px;
-      }
+  section > .section-body{ max-width:760px; }
 
-      .pack-name {
-        font-size: 1.2rem;
-      }
+  .alt-bg{ background:var(--canvas-alt); }
 
-      .pack-location {
-        font-size: 0.75rem;
-      }
+  /* ---------- Video ---------- */
+  .video-container{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+    max-width:100%;
+    border-radius:12px;
+    margin-top:1rem;
+    box-shadow:0 10px 30px rgba(11,37,64,0.15);
+  }
+  .video-container iframe{ position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
 
-      .hero {
-        padding: 4rem 1rem 2rem 1rem;
-      }
+  /* ---------- Join steps ---------- */
+  .steps{ display:grid; gap:1.5rem; margin-top:1.5rem; grid-template-columns:repeat(auto-fit, minmax(210px,1fr)); }
 
-      .hero h1 {
-        font-size: 2rem;
-      }
+  .step-card{
+    background:#fff;
+    border-radius:14px;
+    padding:1.5rem;
+    box-shadow:0 6px 18px rgba(11,37,64,0.08);
+    border-top:4px solid var(--ember);
+  }
 
-      .hero p {
-        font-size: 1rem;
-      }
+  .step-number{
+    font-family:'Fraunces', serif;
+    font-size:1.8rem;
+    font-weight:900;
+    color:var(--ember-dark);
+    display:block;
+    margin-bottom:0.4rem;
+  }
 
-      .full-banner {
-        height: 150px;
-      }
-    }
+  .step-card h3{ font-size:1.1rem; margin-bottom:0.4rem; }
+  .step-card p{ font-size:0.98rem; color:#4A564C; margin-bottom:0; }
 
-    .hero {
-      text-align: center;
-      padding: 8rem 2rem 4rem 2rem;
-    }
+  .promo-banner{
+    width:100%;
+    border-radius:14px;
+    margin:1.5rem 0;
+    box-shadow:0 10px 30px rgba(11,37,64,0.15);
+  }
 
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-    }
+  /* ---------- Gallery / slideshow ---------- */
+  .slideshow{
+    position:relative;
+    margin-top:1.5rem;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(11,37,64,0.15);
+    background:var(--pine-dark);
+    touch-action:pan-y;
+  }
 
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 600px;
-      margin: auto;
-    }
+  .slide-track{
+    display:flex;
+    transition:transform 0.45s ease;
+  }
 
-    section {
-      padding: 4rem 2rem;
-      max-width: 960px;
-      margin: auto;
-    }
+  .slide{
+    min-width:100%;
+    aspect-ratio:16/9;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    color:#fff;
+    text-align:center;
+    padding:1.5rem;
+  }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
+  .slide svg{ width:72px; height:72px; margin-bottom:0.8rem; opacity:0.95; }
 
-    section p,
-    section li {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+  .slide-caption{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.3rem;
+  }
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      max-width: 100%;
-      margin: 2rem auto;
-    }
+  .slide-sub{ font-size:0.9rem; color:var(--trail); margin-top:0.2rem; }
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
+  .slide-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(255,255,255,0.15);
+    border:none;
+    color:#fff;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    font-size:1.3rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    backdrop-filter:blur(2px);
+  }
+  .slide-nav:hover{ background:rgba(255,255,255,0.3); }
+  .slide-prev{ left:12px; }
+  .slide-next{ right:12px; }
 
-    iframe {
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
+  .slide-dots{
+    display:flex;
+    justify-content:center;
+    gap:0.5rem;
+    padding:0.9rem 0;
+    background:var(--pine-dark);
+  }
 
-    .full-banner {
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 300px;
-      margin-top: 4rem;
-    }
+  .slide-dot{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(255,255,255,0.35);
+    border:none;
+    cursor:pointer;
+    padding:0;
+  }
+  .slide-dot.active{ background:var(--gold); }
 
-    #bottom-banner {
-      background-image: url('assets/banner-lower.jpg');
-    }
+  .gallery-note{
+    font-size:0.9rem;
+    color:#5c6a5e;
+    margin-top:0.8rem;
+    font-style:italic;
+  }
 
-    footer {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      margin-top: 0;
-    }
+  /* ---------- Events grid ---------- */
+  .events-grid{
+    display:grid;
+    gap:1.2rem;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    margin-top:1.5rem;
+  }
 
-    a {
-      color: var(--primary);
-    }
-  </style>
+  .event-card{
+    background:#fff;
+    border-radius:14px;
+    padding:1.3rem 1.4rem;
+    box-shadow:0 6px 18px rgba(11,37,64,0.08);
+    border-left:4px solid var(--pine);
+  }
+
+  .event-card h3{ font-size:1.05rem; margin-bottom:0.3rem; color:var(--pine-dark); }
+  .event-card p{ font-size:0.92rem; color:#4A564C; margin-bottom:0; }
+
+  /* ---------- Location ---------- */
+  .map-frame{
+    width:100%;
+    height:400px;
+    border:0;
+    border-radius:12px;
+    margin-top:1rem;
+    box-shadow:0 10px 30px rgba(11,37,64,0.15);
+  }
+
+  /* ---------- Footer ---------- */
+  .full-banner{
+    width:100%;
+    height:auto;
+    display:block;
+    margin-top:2rem;
+  }
+
+  footer{
+    background:var(--pine-dark);
+    color:#EFE8D8;
+    text-align:center;
+    padding:2.2rem 1.5rem;
+    font-size:0.9rem;
+  }
+  footer a{ color:var(--gold); }
+
+  .footer-badge{
+    max-width:180px;
+    margin:0 auto 1rem;
+  }
+
+  .fade-in{
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible{ opacity:1; transform:translateY(0); }
+</style>
 </head>
 <body>
 
-  <header>
-    <div class="logo-group">
-      <img src="assets/scout-logo.jpg" alt="Pack 2008 Logo" />
-      <div class="pack-title">
-        <div class="pack-name">Cub Scout Pack 2008</div>
-        <div class="pack-location">Cedar Park, TX</div>
-      </div>
+<header>
+  <div class="logo-group">
+    <img class="logo" src="assets/scout-logo.jpg" alt="Pack 2008 Logo" />
+    <div class="pack-title">
+      <span class="pack-name">Cub Scout Pack 2008</span>
+      <span class="pack-location">Cedar Park, TX</span>
     </div>
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <nav id="nav-menu">
-      <a href="#about">About</a>
-      <a href="#join">Join</a>
-      <a href="#calendar">Calendar</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  </div>
+  <button class="hamburger" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="primary-nav" id="nav-menu">
+    <a href="#about">About</a>
+    <a href="#join">Join</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#calendar">Calendar</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>Welcome to Cub Scout Pack 2008</h1>
-    <p>Cedar Park, Texas — Where Adventure, Leadership & Fun Begin!</p>
-  </section>
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Scouting America &middot; Chartered Pack</span>
+    <h1>Adventure Starts Here</h1>
+    <p class="tagline">Cub Scout Pack 2008 &mdash; where kids in Cedar Park build confidence, friendships, and a love of the outdoors, one adventure at a time.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#join">Join the Pack</a>
+      <a class="btn btn-outline" href="#calendar">See What's Coming Up</a>
+    </div>
+  </div>
+</section>
+
+<main>
 
   <section id="about">
-    <h2>About Our Pack</h2>
-    <p>Pack 2008 is a family-volunteer-led Cub Scout pack based in Cedar Park, TX. We welcome boys and girls in grades K–5th to participate in fun, skill-building activities that promote character, citizenship, and leadership.</p>
-    <p>We meet weekly and hold exciting events like camping, Raingutter Regatta, Pinewood Derby, and service projects.</p>
-    <p>Our Pack is made up of kids and parent volunteers from Westside, Knowles, and Bagdad Elementary schools, as well as homeschool and charter school families in the Cedar Park and Leander areas.</p>
+    <div class="waypoint" aria-hidden="true">🧭</div>
+    <div class="section-body fade-in">
+      <h2>About Our Pack</h2>
+      <p>Pack 2008 is a family-volunteer-led Cub Scout pack based in Cedar Park, TX. We welcome boys and girls in grades K&ndash;5th to participate in fun, skill-building activities that promote character, citizenship, and leadership.</p>
+      <p>We meet weekly and hold exciting events like camping trips, the Raingutter Regatta, the Pinewood Derby, and hands-on service projects.</p>
+      <p>Our Pack is made up of kids and parent volunteers from Westside, Knowles, and Bagdad Elementary schools, as well as homeschool and charter school families across the Cedar Park and Leander areas.</p>
+    </div>
   </section>
 
-  <section id="video">
-    <h2>What are the Benefits of Cub Scouts?</h2>
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/De1JbT6Vglg"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+  <section id="video" class="alt-bg">
+    <div class="waypoint" aria-hidden="true">🎥</div>
+    <div class="section-body fade-in">
+      <h2>Why Cub Scouts?</h2>
+      <p>A quick look at what makes Scouting such a great fit for kids.</p>
+      <div class="video-container">
+        <iframe
+          src="https://www.youtube.com/embed/De1JbT6Vglg"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p style="font-size:0.9rem; margin-top:0.6rem;"><a href="https://www.youtube.com/watch?v=De1JbT6Vglg" target="_blank" rel="noopener">Trouble viewing? Watch on YouTube &rarr;</a></p>
     </div>
   </section>
 
   <section id="join">
-    <h2>Join the Adventure</h2>
-    <p>We are actively recruiting! If your child is in Kindergarten through 5th grade, they’re eligible to join Cub Scouts.</p>
-    <ul>
-      <li>Age-appropriate outdoor adventure</li>
-      <li>Community service projects</li>
-      <li>Character and leadership development</li>
-    </ul>
-    <p>Visit <a href="https://beascout.org" target="_blank">BeAScout.org</a> to learn more or email us below.</p>
+    <div class="waypoint" aria-hidden="true">🏕️</div>
+    <div class="section-body fade-in">
+      <h2>Join the Adventure</h2>
+      <p>We're actively recruiting! Any child in Kindergarten through 5th grade is eligible to join &mdash; here's how to get started.</p>
+      <img src="assets/lower-banner.jpg" alt="Join Cub Scouts today at beascout.org" class="promo-banner" />
+      <div class="steps">
+        <div class="step-card">
+          <span class="step-number">1</span>
+          <h3>Visit BeAScout</h3>
+          <p>Find Pack 2008 and start an application at <a href="https://beascout.org" target="_blank" rel="noopener">BeAScout.org</a>.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">2</span>
+          <h3>Come to a Meeting</h3>
+          <p>Bring your scout to a Tuesday meeting to try it out before committing &mdash; no pressure, just fun.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-number">3</span>
+          <h3>Gear Up & Go</h3>
+          <p>Grab a handbook and uniform, and start earning adventures right away.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="alt-bg">
+    <div class="waypoint" aria-hidden="true">📸</div>
+    <div class="section-body fade-in">
+      <h2>From the Trail</h2>
+      <p>A few highlights from Pack 2008 adventures this year.</p>
+
+      <div class="slideshow" id="slideshow">
+        <div class="slide-track" id="slide-track">
+          <div class="slide" style="background:linear-gradient(135deg,#14375E,#245586);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M12 2 3 20h18L12 2Z" stroke-linejoin="round"/><path d="M12 10 7 20h10L12 10Z" fill="#F2B705" stroke="none"/></svg>
+            <span class="slide-caption">Fall Family Campout</span>
+            <span class="slide-sub">Tents, campfires, and s'mores</span>
+          </div>
+          <div class="slide" style="background:linear-gradient(135deg,#E8763F,#C1592A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="3" y="9" width="18" height="4" rx="1"/><path d="M5 13v4M19 13v4" /><path d="M12 9V6l4-2"/></svg>
+            <span class="slide-caption">Raingutter Regatta</span>
+            <span class="slide-sub">Sailboat races, pack pride</span>
+          </div>
+          <div class="slide" style="background:linear-gradient(135deg,#0B2540,#14375E);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><rect x="2" y="13" width="20" height="6" rx="1"/><circle cx="7" cy="19" r="1.6" fill="#F2B705" stroke="none"/><circle cx="17" cy="19" r="1.6" fill="#F2B705" stroke="none"/><path d="M4 13l3-6h6l3 6"/></svg>
+            <span class="slide-caption">Pinewood Derby</span>
+            <span class="slide-sub">Handmade cars, big cheers</span>
+          </div>
+          <div class="slide" style="background:linear-gradient(135deg,#E3A008,#C1592A);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M4 21V9l8-6 8 6v12" stroke-linejoin="round"/><path d="M9 21v-6h6v6"/></svg>
+            <span class="slide-caption">Blue & Gold Banquet</span>
+            <span class="slide-sub">Celebrating a year of scouting</span>
+          </div>
+          <div class="slide" style="background:linear-gradient(135deg,#245586,#8FA8C2);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5"><path d="M3 12c3-4 15-4 18 0M3 12c3 4 15 4 18 0" /><circle cx="12" cy="12" r="1.6" fill="#F2B705" stroke="none"/></svg>
+            <span class="slide-caption">NASA Overnight</span>
+            <span class="slide-sub">Space exploration in Houston</span>
+          </div>
+        </div>
+        <button class="slide-nav slide-prev" aria-label="Previous photo" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slide-nav slide-next" aria-label="Next photo" onclick="moveSlide(1)">&#10095;</button>
+        <div class="slide-dots" id="slide-dots"></div>
+      </div>
+      <p class="gallery-note">Placeholder graphics for now &mdash; swap in real pack photos by dropping files into <code>assets/gallery/</code> and updating the slides (see comment in the code).</p>
+    </div>
   </section>
 
   <section id="calendar">
-    <h2>Upcoming Events</h2>
-    <p>We share event details through our group emails but here's what's on the horizon for this year:</p>
-    <ul>
-      <li>Fall Family Campout with tents, campfires, and fishing</li>
-      <li>Create and race wooden boats at Raingutter Regatta</li>
-      <li>Campout at Camp Tom Wooten with archery and BB shooting</li>
-      <li>Build and Race Wooden Cars at Pinewood Derby</li>
-      <li>Build and Launch a rocket at the Rocket Regatta</li>
-      <li>Service Projects and Hikes</li>
-    </ul>
+    <div class="waypoint" aria-hidden="true">📅</div>
+    <div class="section-body fade-in">
+      <h2>Upcoming Events</h2>
+      <p>Full dates are posted in our group emails and Facebook page &mdash; here's what's on the horizon this year:</p>
+      <div class="events-grid">
+        <div class="event-card"><h3>Rocket Regatta</h3><p>Scouts and parents learn to build and launch model rockets.</p></div>
+        <div class="event-card"><h3>Fall Family Campout</h3><p>A weekend outdoors with tents, fishing, and campfire stories.</p></div>
+        <div class="event-card"><h3>Raingutter Regatta</h3><p>Scouts race hand-built sailboats down rain gutter tracks.</p></div>
+        <div class="event-card"><h3>Campout at Cub World</h3><p>Campfire cooking, tents, BB guns, and archery.</p></div>
+        <div class="event-card"><h3>Pinewood Derby</h3><p>Design, build, and race a wooden car for pack glory.</p></div>
+        <div class="event-card"><h3>Service Projects & Hikes</h3><p>Giving back to Cedar Park while exploring local trails.</p></div>
+      </div>
+    </div>
   </section>
 
-  <section id="location">
-    <h2>Where We Meet</h2>
-    <p>We meet most Tuesday evenings during the elementary school year, from 6:30–7:30 PM, at Christ Episcopal Church on Whitestone Boulevard in Cedar Park.</p>
-
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9273.673466819542!2d-97.88399812341281!3d30.51124967469184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2e7be2fce417%3A0x1c38759b98bb5d4f!2sChrist%20Episcopal%20Church!5e1!3m2!1sen!2sus!4v1751748898247!5m2!1sen!2sus"
-      width="100%" height="450" style="border:0;" allowfullscreen=""
-      loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-
-    <p>
-      📍 <a href="https://maps.app.goo.gl/y9hZ8zWmvqpGQqiTA" target="_blank">
-        View on Google Maps
-      </a>
-    </p>
+  <section id="location" class="alt-bg">
+    <div class="waypoint" aria-hidden="true">📍</div>
+    <div class="section-body fade-in">
+      <h2>Where We Meet</h2>
+      <p>We meet most Tuesday evenings during the elementary school year, from 6:30&ndash;7:30 PM, at Christ Episcopal Church on Whitestone Boulevard in Cedar Park.</p>
+      <iframe class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9273.673466819542!2d-97.88399812341281!3d30.51124967469184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2e7be2fce417%3A0x1c38759b98bb5d4f!2sChrist%20Episcopal%20Church!5e1!3m2!1sen!2sus!4v1751748898247!5m2!1sen!2sus"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Christ Episcopal Church">
+      </iframe>
+      <p style="margin-top:1rem;">📍 <a href="https://maps.app.goo.gl/y9hZ8zWmvqpGQqiTA" target="_blank" rel="noopener">View on Google Maps</a></p>
+    </div>
   </section>
 
   <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Got questions? Want to join?</p>
-    <p>Email us at <a href="mailto:atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
-    <p>Request more information at <a href="https://my.scouting.org/more-info/002e91e0-0312-4479-bc29-c1617d85dfc6&beascout=true" target="_blank">my.scouting.org</a></p>
-    <p>👍 Connect with us on Facebook:  
-      <a href="https://www.facebook.com/groups/pack2008" target="_blank">
-        facebook.com/groups/pack2008
-      </a>
-    </p>
+    <div class="waypoint" aria-hidden="true">✉️</div>
+    <div class="section-body fade-in">
+      <h2>Contact Us</h2>
+      <p>Got questions? Want to join?</p>
+      <p>Email us at <a href="mailto:atxpack2008@gmail.com">atxpack2008@gmail.com</a></p>
+      <p>Request more information at <a href="https://my.scouting.org/more-info/002e91e0-0312-4479-bc29-c1617d85dfc6&beascout=true" target="_blank" rel="noopener">my.scouting.org</a></p>
+      <p>Connect with us on Facebook: <a href="https://www.facebook.com/groups/pack2008" target="_blank" rel="noopener">facebook.com/groups/pack2008</a></p>
+    </div>
   </section>
 
-  <div id="bottom-banner" class="full-banner"></div>
+</main>
 
-  <footer>
-    &copy; 2025 Cub Scout Pack 2008 • Cedar Park, TX<br/>
-    Proudly chartered by Scouting America
-  </footer>
+<img src="assets/banner-lower.jpg" alt="#AdventureOn! Join Cub Scouts at beascout.org" class="full-banner" />
 
-  <script>
-    function toggleMenu() {
-      document.getElementById("nav-menu").classList.toggle("active");
+<footer>
+  <img src="assets/scout-me-in.jpg" alt="Scout Me In" class="footer-badge" />
+  &copy; 2026 Cub Scout Pack 2008 &bull; Cedar Park, TX<br/>
+  Proudly chartered by Scouting America
+</footer>
+
+<script>
+  function toggleMenu(btn){
+    var nav = document.getElementById('nav-menu');
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    nav.classList.toggle('active');
+  }
+
+  // Close mobile menu when a link is tapped
+  document.querySelectorAll('#nav-menu a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('nav-menu').classList.remove('active');
+      document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ---- Slideshow ----
+  var track = document.getElementById('slide-track');
+  var slides = track ? track.children : [];
+  var dotsWrap = document.getElementById('slide-dots');
+  var current = 0;
+  var autoplayTimer;
+
+  if (track && slides.length) {
+    for (var i = 0; i < slides.length; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      (function(idx){
+        dot.addEventListener('click', function(){ goToSlide(idx); resetAutoplay(); });
+      })(i);
+      dotsWrap.appendChild(dot);
     }
-  </script>
+
+    function goToSlide(index){
+      current = (index + slides.length) % slides.length;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      var dots = dotsWrap.querySelectorAll('.slide-dot');
+      dots.forEach(function(d, i){ d.classList.toggle('active', i === current); });
+    }
+
+    window.moveSlide = function(dir){
+      goToSlide(current + dir);
+      resetAutoplay();
+    };
+
+    function resetAutoplay(){
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(function(){ goToSlide(current + 1); }, 5000);
+    }
+    resetAutoplay();
+
+    var sw = document.getElementById('slideshow');
+    sw.addEventListener('mouseenter', function(){ clearInterval(autoplayTimer); });
+    sw.addEventListener('mouseleave', resetAutoplay);
+
+    // Touch swipe
+    var touchStartX = 0;
+    sw.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+    sw.addEventListener('touchend', function(e){
+      var diff = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(diff) > 40) { moveSlide(diff < 0 ? 1 : -1); }
+    }, {passive:true});
+  }
+
+  // ---- Fade-in on scroll ----
+  var faders = document.querySelectorAll('.fade-in');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    faders.forEach(function(el){ observer.observe(el); });
+  } else {
+    faders.forEach(function(el){ el.classList.add('visible'); });
+  }
+</script>
+
 </body>
 </html>
