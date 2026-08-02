@@ -160,23 +160,26 @@
     nav.primary-nav{
       display:flex;
       flex-direction:column;
-      align-items:flex-start;
+      align-items:center;
+      justify-content:center;
       background:var(--pine-dark);
-      position:absolute;
-      top:100%;
-      left:0;
+      position:fixed;
+      inset:0;
       width:100%;
-      padding:0.5rem 1.5rem 1.5rem;
-      max-height:0;
-      overflow:hidden;
-      transition:max-height 0.3s ease;
+      height:100%;
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+      transition:opacity 0.25s ease;
+      z-index:1500;
     }
-    nav.primary-nav.active{ max-height:320px; }
-    nav.primary-nav a{ margin:0.9rem 0; font-size:1.1rem; }
-    .hamburger{ display:flex; }
+    nav.primary-nav.active{ opacity:1; visibility:visible; pointer-events:auto; }
+    nav.primary-nav a{ margin:1.1rem 0; font-size:1.3rem; }
+    .hamburger{ display:flex; position:relative; z-index:1600; }
     .pack-name{ font-size:1.1rem; }
     .pack-location{ font-size:0.7rem; }
     header img.logo{ height:40px; width:40px; }
+    body.menu-open{ overflow:hidden; }
   }
 
   /* ---------- Hero ---------- */
@@ -478,7 +481,7 @@
   <div class="logo-group">
     <img class="logo" src="assets/scout-logo.jpg" alt="Pack 2008 Logo" />
     <div class="pack-title">
-      <span class="pack-name">Cub Scout Pack 2008</span>
+      <span class="pack-name">Pack 2008</span>
       <span class="pack-location">Cedar Park, TX</span>
     </div>
   </div>
@@ -610,11 +613,11 @@
       <h2>Upcoming Events</h2>
       <p>Full dates are posted in our group emails and Facebook page &mdash; here's what's on the horizon this year:</p>
       <div class="events-grid">
-        <div class="event-card"><h3>Rocket Regatta</h3><p>Scouts and parents learn to build and launch model rockets.</p></div>
-        <div class="event-card"><h3>Fall Family Campout</h3><p>A weekend outdoors with tents, fishing, and campfire stories.</p></div>
-        <div class="event-card"><h3>Raingutter Regatta</h3><p>Scouts race hand-built sailboats down rain gutter tracks.</p></div>
-        <div class="event-card"><h3>Campout at Cub World</h3><p>Campfire cooking, tents, BB guns, and archery.</p></div>
+        <div class="event-card"><h3>Fall Family Campout</h3><p>A weekend outdoors with tents, trails, and campfire stories.</p></div>
+        <div class="event-card"><h3>Raingutter Regatta</h3><p>Scouts race hand-built sailboats down rain gutters.</p></div>
+        <div class="event-card"><h3>Overnight at NASA, Houston</h3><p>A behind-the-scenes trip to Space Center Houston.</p></div>
         <div class="event-card"><h3>Pinewood Derby</h3><p>Design, build, and race a wooden car for pack glory.</p></div>
+        <div class="event-card"><h3>Blue & Gold Banquet</h3><p>Our annual celebration of the pack's year together.</p></div>
         <div class="event-card"><h3>Service Projects & Hikes</h3><p>Giving back to Cedar Park while exploring local trails.</p></div>
       </div>
     </div>
@@ -660,6 +663,7 @@
     var expanded = btn.getAttribute('aria-expanded') === 'true';
     btn.setAttribute('aria-expanded', String(!expanded));
     nav.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
   }
 
   // Close mobile menu when a link is tapped
@@ -667,6 +671,7 @@
     link.addEventListener('click', function(){
       document.getElementById('nav-menu').classList.remove('active');
       document.querySelector('.hamburger').setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
     });
   });
 
